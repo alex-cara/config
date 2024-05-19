@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+PID=$(pidof swaybg)
+echo $PID &
+
+swaybg -i ~/Pictures/wallpapers/wall.png & disown
+echo $( pidof swaybg)
+echo $PID
+sleep 0.5s
+kill $PID &

@@ -1,0 +1,3 @@
+sudo xbacklight -set 0 
+
+sudo swayidle after-resume "sudo xbacklight -set 30"

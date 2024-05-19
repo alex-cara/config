@@ -1,0 +1,13 @@
+#!/bin/bash
+sleep 5
+for ((i = 0; i < 1250000; i++)); do
+  xdotool keydown --delay 3600 w keyup w mousemove_relative -- -950 0 keydown --delay 2050 w keyup w keydown --delay 500 f keyup f 
+  sleep 6
+  xdotool keydown --delay 100 g keyup g keydown --delay 100 s keyup s 
+  sleep .5 
+  xdotool keydown --delay 100 e keyup e 
+  sleep .5 
+  xdotool keydown --delay 100 e keyup e
+  sleep 5.3
+  echo $i
+done

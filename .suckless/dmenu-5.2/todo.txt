@@ -1,0 +1,2 @@
+* Make the dmenu prompt a little higher up than mid way in the screen
+** Check the dmenu-center diff to figure out how to do that

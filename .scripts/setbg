@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# ~/Pictures/wallpapers/wall.png is the location of the systemwallpaper.
+# This script comes from Luke Smith on youtube: https://www.youtube.com/watch?v=IUvM2Hc6jtk
+# This script when given an argument 
+# Given a directory with images it will be able to randomly pick one
+# Using pywall it will beable to set a dwm color scheme 
+
+# $1 is just the file path to the image
+[ -f "$1" ] && cp "$1" ~/Pictures/wallpapers/wall.png && notify-send -i "HOME/Pictures/wallpapers/wall.png" "Wallpaper changed." &
+# [ -d "$1" ] && mv "$(find "$1"/*.{jpg,jpeg,png} -type f | shuf -n 1)" ~/Pictures/wallpapers/wall.png
+# This would set a random wallpaper from a directory but am working on an implemntation
+
+# If pywal is installed
+wal -c &
+wal -e -q -t -i ~/Pictures/wallpapers/wall.png &
+cat ~/.cache/wal/colors.Xresources > ~/.Xresources
+sleep 1s
+cp ~/.cache/wal/colors-kitty.conf ~/.config/kitty/current-theme.conf
+xrdb -merge ~/.Xresources 
+xsetroot -name "fsignal:2"
+
+
+if [ $XDG_SESSION_DESKTOP == sway ]; then
+  echo "This ran"
+  PID=$(pidof swaybg)
+
+  swaybg -m fill -i ~/Pictures/wallpapers/wall.png & disown
+  sleep 0.7s
+  kill $PID &
+  sleep 0.5s
+  swaymsg reload &
+  
+else
+  type wal >/dev/null 2>&1 && { wal -c 
+  echo "Got here!"
+  cat ~/.cache/wal/colors.Xresources > ~/.Xresources &
+  xrdb -merge ~/.Xresources &
+  xsetroot -name "fsignal.xrdb"
+  killall dwmblocks
+  setsid dwmblocks >/dev/null & } >/dev/null 2>&1
+  xwallpaper --zoom ~/Pictures/wallpapers/wall.png &
+fi
