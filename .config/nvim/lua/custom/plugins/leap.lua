@@ -28,7 +28,9 @@ return {
       bold = true,
       nocombine = true,
     })
-    require('leap').create_default_mappings()
+
+    vim.keymap.set('n', 's', '<Plug>(leap)')
+    vim.keymap.set({ 'x', 'o' }, 's', '<Plug>(leap)')
     require('leap').opts.safe_labels = {}
   end,
 }

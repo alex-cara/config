@@ -1,4 +1,5 @@
 -- TODO: Important to seperate options and keymaps, will be done later
+-- I need too set stuff of for surrond
 --
 -- Adding move around viusal mode text up and down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")

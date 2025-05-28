@@ -2,7 +2,7 @@ return {
   'lervag/vimtex',
   init = function()
     vim.g.vimtex_compiler_latexmk = {
-      build_dir = '.out',
+      build_dir = '.latexmk',
       options = {
         '-shell-escape',
         '-verbose',

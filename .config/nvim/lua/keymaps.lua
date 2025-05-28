@@ -2,6 +2,15 @@
 --  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
+
+vim.keymap.set(
+  { 'n', 'v' }, -- string or list
+  'S', -- string
+  '<Nop>'
+)
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
